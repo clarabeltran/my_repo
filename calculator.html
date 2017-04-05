@@ -1,28 +1,50 @@
-<!DOCTYPE html><html><head> <title>Calculator</title><meta charset="utf-8"> <script type="text/javascript">
-function cube() {
-var num = document.getElementById("n1"); num.value = Math.pow(num.value, 3);
-} </script> </head> <body>
-Number:
-<input type="text" id="n1"><p>
-<button id="cube"> x^3 </button> </body>
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Calculadora</title>
+	<meta charset="utf-8">
+	<script type="text/javascript">
+		var protocol = (document.location.protocol=="file:" ? "http:" : document.location.protocol);
+		document.write(unescape("%3Cscript src='" + protocol + "//code.jquery.com/jquery-2.2.1.min.js' type='text/javascript'%3E%3C/script%3E"));
+	</script>
+</head>
+<body>
+	<div>
+		Número: <input type="text" id="pantalla"/>
+		<button id="cube">x^3</button>
+		<button id="igual"> = </button>
+		<button id="cuadrado">x^4</button>
 
-<script type="text/javascript">
+	</div>
+
+	<script type="text/javascript">
 		var acc = 0;
 		var op;
 
 		$(document).ready(function(){ 
-			$("#n1").click(function(){
+			$("#pantalla").click(function(){
 				$(this).val("");
 			});
 			$("#cube").click(function(){
-				var n = parseFloat($("#n1").val());
-				acc = n*n*n;
-				$("#n1").val(acc);
-				acc=0;
+				acc = parseFloat($("#pantalla").val());
+				op = "x^3";
 			});
-			
+			$("#cuadrado").click(function(){
+				acc = parseFloat($("#pantalla").val());
+				op = "x^4";
+			});
+			$("#igual").click(function(){
+				var n = parseFloat($("#pantalla").val());
+				if(op === "x^3"){
+					acc = n*n*n;
+				} else if(op === "x^4") {
+					acc = n*n*n*n;
+				} 
+				$("#pantalla").val(acc);
+				acc = 0;
+				op = undefined;
+			});
 		});
-
 	</script>
+</body>
 </html>
-
