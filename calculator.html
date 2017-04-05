@@ -1,0 +1,28 @@
+<!DOCTYPE html><html><head> <title>Calculator</title><meta charset="utf-8"> <script type="text/javascript">
+function cube() {
+var num = document.getElementById("n1"); num.value = Math.pow(num.value, 3);
+} </script> </head> <body>
+Number:
+<input type="text" id="n1"><p>
+<button id="cube"> x^3 </button> </body>
+
+<script type="text/javascript">
+		var acc = 0;
+		var op;
+
+		$(document).ready(function(){ 
+			$("#n1").click(function(){
+				$(this).val("");
+			});
+			$("#cube").click(function(){
+				var n = parseFloat($("#n1").val());
+				acc = n*n*n;
+				$("#n1").val(acc);
+				acc=0;
+			});
+			
+		});
+
+	</script>
+</html>
+
